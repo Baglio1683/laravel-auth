@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use App\Http\Controllers\Controller; 
 use App\Http\Requests\StoreProjectRequest;
-use App\Http\Requests\UpdateProjectRequest;
+use App\Http\Requests\UpdateProjectRequest; 
 
 class ProjectController extends Controller
 {
@@ -27,7 +27,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create'); 
     }
 
     /**
@@ -38,7 +38,13 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        //
+        $form_data = $request->all();
+        $form_data['slug'] = Project::generateSlug($form_data['title']); 
+        // $project = new Project();
+        // $project->fill($form_data);
+        // $project->save(); 
+        $project = Project::create($form_data); //fillable is necessary
+        return redirect()->route('admin.projects.index'); 
     }
 
     /**
