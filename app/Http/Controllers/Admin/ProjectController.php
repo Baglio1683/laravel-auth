@@ -44,7 +44,7 @@ class ProjectController extends Controller
         // $project->fill($form_data);
         // $project->save(); 
         $project = Project::create($form_data); //fillable is necessary
-        return redirect()->route('admin.projects.index'); 
+        return redirect()->route('admin.projects.index')->with('message', 'il progetto è stato creato con successo'); 
     }
 
     /**
