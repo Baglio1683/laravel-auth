@@ -31,6 +31,9 @@
                                     <a class="btn btn-success" href="{{ route('admin.projects.show', $project->slug) }}">
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
+                                    <a class="btn btn-success" href="{{ route('admin.projects.edit', $project->slug) }}">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
