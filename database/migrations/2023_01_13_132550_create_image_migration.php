@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('image_migration', function (Blueprint $table) {
             $table->id();
+            $table->string('title', 150)->unique();
+            $table->text('content')->nullable();
+            $table->string('slug');
+            $table->string('cover_image',520); 
             $table->timestamps();
         });
     }
