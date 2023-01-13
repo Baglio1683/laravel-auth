@@ -7,6 +7,13 @@
             <h5>{{ $project->created_at }}</h5>
             <p>{{ $project->slug }}</p>
         </div>
-        <p class="mt-3">{{ $project->content }}</p>
+        <div>
+            <img src="{{ asset('storage/' . $project->cover_image) }}" alt="">
+        </div>
+        @if ($project->cover_image)
+            <p class="mt-3">{{ $project->content }}</p>
+        @else
+            <div class="w-50 bg-secondary py-4 text-center">No image</div>
+        @endif
     </div>
 @endsection
