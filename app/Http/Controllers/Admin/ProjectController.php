@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use App\Http\Controllers\Controller; 
 use App\Http\Requests\StoreProjectRequest;
-use App\Http\Requests\UpdateProjectRequest; 
+use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -43,6 +44,10 @@ class ProjectController extends Controller
         // $project = new Project();
         // $project->fill($form_data);
         // $project->save(); 
+        if($request->hasFile('coverImage')){
+            $path = Storage::put('projects_images',  $request->cover_image);
+            $form_data['cover_image'] = $path; 
+        }
         $project = Project::create($form_data); //fillable is necessary
         return redirect()->route('admin.projects.index')->with('message', 'il progetto è stato creato con successo'); 
     }

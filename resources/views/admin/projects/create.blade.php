@@ -24,10 +24,10 @@
                 {{-- IMMAGINE  --}}
                 <form action="" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="input-group mb-3">
-                        <input type="file" class="form-control" id="inputGroupFile02" name="inputGroupFile02">
-                        <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                        @error('inputGroupFile02')
+                    <div class="form-group mb-3">
+                        <label for="cover_image">Immagine</label>
+                        <input type="file" class="form-control" id="cover_image" name="cover_image">
+                        @error('cover_image')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
