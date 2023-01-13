@@ -13,13 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('image_migration', function (Blueprint $table) {
-            $table->id();
-            $table->string('title', 150)->unique();
-            $table->text('content')->nullable();
-            $table->string('slug');
-            $table->string('cover_image',520); 
-            $table->timestamps();
+        Schema::table('projects', function (Blueprint $table) {
+            $table->string('cover_image')->nullable()->after('slug'); 
         });
     }
 
@@ -30,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('image_migration');
+        Schema::table('projects', function (Blueprint $table) {
+            $table->dropColumn('cover_image'); 
+        });
     }
 };
